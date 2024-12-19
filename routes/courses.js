@@ -4,9 +4,9 @@ const Post = require('../modules/courses');
 
 router.post('/', async (req, res) => {
     try {
-        const { courseId, title, description, image, videos, price, publisher, category } = req.body;
+        const { courseId, title, description, imageUrl, videosUrl, price, publisherId, category } = req.body;
         
-        if (!courseId || !title || !description || !image || !videos || !price || !publisher || !category) {
+        if (!courseId || !title || !description || !imageUrl || !videosUrl || !price || !publisherId || !category) {
             return res.status(400).json({ message: 'Missing required fields' });
         }
         
@@ -14,10 +14,10 @@ router.post('/', async (req, res) => {
             courseId, 
             title, 
             description, 
-            image, 
-            videos, 
+            imageUrl, 
+            videosUrl, 
             price, 
-            publisher, 
+            publisherId, 
             category 
         }); 
         
@@ -43,19 +43,19 @@ router.get('/', async (req, res) => {
 router.patch('/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const { courseId, title, description, image, videos, price, publisher, category, status, rate, numberOfRatings, numberOfBuyers } = req.body;
+        const { courseId, title, description, imageUrl, videosUrl, price, publisherId, category, status, rating, numberOfRatings, numberOfBuyers } = req.body;
         
         const updateData = { 
             courseId, 
             title, 
             description, 
-            image, 
-            videos, 
+            imageUrl, 
+            videosUrl, 
             price, 
-            publisher, 
+            publisherId, 
             category, 
             status, 
-            rate, 
+            rating, 
             numberOfRatings, 
             numberOfBuyers 
         };
