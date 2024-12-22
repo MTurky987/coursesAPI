@@ -7,10 +7,8 @@ app.use(express.json())
 
 const coursesRouter = require('./routes/courses')
 app.use('/courses',coursesRouter)
-const customerRouter=require('./routes/customer');
-app.use('/customer',customerRouter)
-const publisherRouter=require('./routes/publisher');
-app.use('/publisher',publisherRouter)
+const userRouter=require('./routes/user');
+app.use('/user',userRouter)
 const adminRouter=require('./routes/admin');
 app.use('/admin',adminRouter)
 const helpRouter=require('./routes/help');
