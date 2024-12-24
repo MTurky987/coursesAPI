@@ -79,4 +79,16 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+router.get("/:id",async (req,res)=>{
+    try{
+    const id = req.params.id;
+    const course = await Post.findById(id)
+    if(course){
+        res.status(200).json(course)
+    }
+    }catch{
+        res.status(404).json({message: "Error cource not found",error:error.message})
+    }
+})
+
 module.exports = router;

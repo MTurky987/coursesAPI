@@ -1,6 +1,28 @@
 const router = require('express').Router();
 const Post = require('../modules/user'); 
 
+
+
+router.get('/log', async (req, res) => {
+    try {
+        console.log(req.query);  
+
+        const { email } = req.query;  
+        console.log(email);  
+        
+        const user = await Post.findOne({ email: email });  // Query by email
+        
+        if (user) {
+            res.status(200).json(user);
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+
+    } catch (error) {
+        res.status(500).json({ message: 'Error logging in', error: error.message });
+    }
+});
+
 // Create a new user
 router.post('/', async (req, res) => {
     try {
@@ -101,4 +123,6 @@ router.get('/:id',async(req,res)=>{
     }
 
 })
+
+
 module.exports = router;
